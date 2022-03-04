@@ -1,10 +1,14 @@
 
-# Cours de 4 semaines sur Symfony
+# Cours Symfony
 
 * Initiation
 * Intermédiaire
 * Perfectionnement
 * Projet
+
+## Table des matières
+
+[TOC]
 
 ## MVC
 
@@ -81,9 +85,9 @@ La View/Vue regroupe tous les fichiers nécessaires à la génération de notre 
 La View est idéalement composée de plusieurs fichiers regroupés dans le dossier Templates, offrant les templates/gabarits nécessaires pour expliquer et contextualiser les informations du Model récupéré sur décision du Controller. Le code PHP est laissé aussi minimal que possible dans ces fichiers de vue, dans l'idéal de séparation des rôles.
 Nous allons utiliser un langage dit de Template, Twig, qui a pour but de simplifier la maigre part de PHP et de rendre les templates/gabarits aussi faciles à lire et flexibles que possible.
 
-## Activité
+# Semaine 1
 
-### Notre IndexController
+## Notre IndexController
 
 Si index.php est le point de départ de la requête client vers le lancement de notre application, les classes .php de Controller sont où nous, en tant que développeurs, commençons le développement de notre application.
 
@@ -139,7 +143,7 @@ Il existe une commande spéciale pour obtenir la liste de toutes les routes acti
 php bin/console debug:router
 ```
 
-### Les Paramètres de Route
+## Les Paramètres de Route
 
 Nous pouvons définir des paramètres de route, lesquels seront transmis à notre fonction et seront donc susceptibles d'être intégrés à la logique algorithmique.
 Le paramètre est indiqué via des accolades (par exemple, {squareValue}). La valeur indiquée par la requête client à la place de ce segment sera récupérée et placée à l'intérieur d'une variable du même nom (par exemple ici, $squareValue). Nous pouvons alors reprendre cette valeur et l'utiliser comme bon nous semble.
@@ -155,9 +159,9 @@ squareColor()
 * Le résultat par défaut: (un carré noir)
 * Le résultat en cas d'un sqColor non renseigné (carré gris)
 
-### Twig
+## Twig
 
-#### Découverte de Twig
+### Découverte de Twig
 
 Lorsque nous terminons notre méthode de Controller, nous lui indiquons quel type d'objet de type Response rendre. En tuilisant $this->render, nous indiquons à Symfony que nous allons transiter par Twig afin de générer la Response que nous désirons envoyer à la requête client.
 
@@ -217,7 +221,7 @@ Attention, le contenu d'un bloc hérité n'affiche pas les valeurs saisies à l'
   {{ parent() }}
 Cette fonction récupère les instructions présentes à l'intérieur du bloc concerné du fichier parent et le recopie à l'emplacement de la fonction.
 
-#### Les Fonctionnalités Twig
+### Les Fonctionnalités Twig
 
 **Les Filtres**
 
@@ -248,7 +252,7 @@ Les tests sont des entrées spéciales, dans des balises à double accolades, ay
 {% if var is empty %} -> empty: vérifie si la variable concernée est vide, rend true dans ce cas (la balise {%%} est utilisée ici en raison de la structure de contrôle if).
 {{ var is even }} -> even: rend True si "var" est un nombre pair.
 
-#### Trois Fonctions Twig particulières
+### Trois Fonctions Twig particulières
 
 **L'Inclusion de Vue**
 
@@ -291,7 +295,7 @@ Tandis que le tableau que nous allons utiliser avec la fonction path() fonctionn
 
 Notre fonction path() ainsi rédigée récupèrera la valeur indiquée par la clef "parametre" et remplacera le segment correspondant par ladite valeur.
 
-### Les Entities (Entités)
+## Les Entities (Entités)
 
 Une Entity (Entité) est une classe PHP au sein de Symfony qui définit ce que l'on nomme une Entity, dotée de plusieurs caractéristiques (à travers ses attributs), et qui sera une unité de base dans la gestion des Models de notre application. En pratique, une classe Entity sera convertie en table par Doctrine, et chaque élément conçu à partir de cette Entity sera une entrée de cette table.
 
@@ -305,7 +309,7 @@ php bin/console make:entity
 
 Plusieurs questions seront alors posées via le terminal afin de pouvoir définir de manière complète notre Entity, avant de la générer automatiquement, par la création de deux classes PHP, une classe Entity et une classe Repository.
 
-### L'Element Model, Doctrine, et les Migrations
+## L'Element Model, Doctrine, et les Migrations
 
 L'Element Model d'une application comporte toutes les données sur laquelle notre application va travaille. La base de données est quant à elle une structure où nous allons classer des données prêtes à être rapidement extraites et utilisées de manière sécurisée pour le fonctionnement de notre application. Les données elles-mêmes sont classées dans des tables, qui réunies composent notre base de données.
 
@@ -343,7 +347,7 @@ Etant donné qu'à chaque nouvelle migration, une nouvelle classe est créée po
 
 La gestion de notre table est entièrement prise en charge par Doctrine: ce n'est pas à nous de nous en occuper. Ce qui nous intéresse est la gestion des Entity. Nous faisons appel à Doctrine pour récupérer des informations dont nous avons besoin pour récupérer des Entity que nous avons ajouté à notre base de données, et nous laissons à Doctrine le travail de manipuler ces données pour générer un objet Entity qui nous sera rendu. Il ne faut donc pas essayer d'effectuer des changements manuels à nos tables de notre BDD.
 
-### Les Fixtures
+## Les Fixtures
 
 Dans le cas d'une application Symfony dont le développement vient de commencer, les outils mis en place peuvent être limités pour le développeur: s'il désire tester ses bases de données sans avoir conçu de fonctions ou de formulaires permettant la mise en ligne rapide d'Entities, il peut cependant employer un autre moyen qui lui permettra de remplir sa base de données avec des informations temporaires: il s'agit des Fixtures.
 
@@ -371,7 +375,7 @@ php bin/console doctrine:fixtures:load
 
 Toutes les classes Fixture dans le dossier DataFixtures se terminant par Fixtures.php verront leur méthode load() appelée juste après que le contenu de la base de données soit purgée.
 
-### Gestion de base de données via Doctrine:
+## Gestion de base de données via Doctrine:
 
 A présent que notre base de données possède des entrées susceptibles d'être récupérées et utilisées par notre application, nous devons être capables de lancer des requêtes à notre base de données en ce sens. En PHP classique, nous utiliserions des requêtes SQL transmises via le module PDO. Dans le cadre de Symfony, nous devrons utiliser Doctrine.
 
@@ -381,7 +385,7 @@ L'Entity Mananger est une classe qui nous permet de gérer le fonctionnement des
 
 Ainsi, nous récupérons deux outils via deux variables: L'Entity Manager, qui nous permettra de récupérer les Repository et d'effectuer les requêtes de persistance et de suppression des Entities, et le Repository, qui possède les méthodes nécessaires pour retrouver les instances d'Entity correspondant à nos critères de recherche.
 
-### Les Formulaires sous Symfony
+## Les Formulaires sous Symfony
 
 Dans le cadre de Symfony, les formulaires sont un aspect très pris en charge et grandhement automatisé. Si, même en PHP/HTML classique, la rédaction et la prise en charge de formulaire sont un aspect essentiel des requêtes client et donc du fonctionnement général du site, en Symfony, cet aspect est encore davantage poussé grâce à la flexibilité du générateur de formulaire avec lequel il est possible de les spécialiser. Ce générateur est le Form Builder.
 
