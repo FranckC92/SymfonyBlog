@@ -81,7 +81,7 @@ La View/Vue regroupe tous les fichiers nécessaires à la génération de notre 
 La View est idéalement composée de plusieurs fichiers regroupés dans le dossier Templates, offrant les templates/gabarits nécessaires pour expliquer et contextualiser les informations du Model récupéré sur décision du Controller. Le code PHP est laissé aussi minimal que possible dans ces fichiers de vue, dans l'idéal de séparation des rôles.
 Nous allons utiliser un langage dit de Template, Twig, qui a pour but de simplifier la maigre part de PHP et de rendre les templates/gabarits aussi faciles à lire et flexibles que possible.
 
-# Semaine 1
+# Initiation: SymfonyBlog
 
 ## Notre IndexController
 
