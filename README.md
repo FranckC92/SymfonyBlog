@@ -6,10 +6,6 @@
 * Perfectionnement
 * Projet
 
-## Table des matières
-
-[TOC]
-
 ## MVC
 
 Symfony est un framework PHP orienté objet, qui a une architecture de type "MVC"
