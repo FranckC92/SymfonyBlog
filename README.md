@@ -149,11 +149,12 @@ Nous pouvons également attribuer une valeur par défaut à notre paramètre de 
 squareColor()
 ```
 
-1- Créer la route
-2- Trois résultats sont possible pour le paramètre de route:
-* Les résultats: Rouge, Vert, Bleu, Jaune
-* Le résultat par défaut: (un carré noir)
-* Le résultat en cas d'un sqColor non renseigné (carré gris)
+1. Créer la route
+2. Trois résultats sont possible pour le paramètre de route:
+
+   * Les résultats: Rouge, Vert, Bleu, Jaune
+   * Le résultat par défaut: (un carré noir)
+   * Le résultat en cas d'un sqColor non renseigné (carré gris)
 
 ## Twig
 
